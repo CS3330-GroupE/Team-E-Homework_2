@@ -43,11 +43,6 @@ public class Student {
 		this.grade = grade;
 	}
 
-	//Display student object information	
-	public void displayStudent() {
-		System.out.println (("Student Name"));
-	}
-	
 	@Override
 	public String toString() {
 		return "Person [id = " + id + ", name = " + name + ", grade = " + grade + "]";

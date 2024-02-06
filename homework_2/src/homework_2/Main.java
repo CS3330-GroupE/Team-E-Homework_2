@@ -8,7 +8,7 @@ public class Main {
 		StudentManager studentManager = new StudentManager();
 		
 		// Read student data from a file and initialize Student objects.
-		boolean fileReadStatus = studentManager.readFromFile("files/studentData.txt");
+		boolean fileReadStatus = studentManager.readFromFile("homework_2/files/studentData.txt");
 				if(fileReadStatus == true) {
 					System.out.println("Reading the file and initializing Student objects successful\n");
 				}
