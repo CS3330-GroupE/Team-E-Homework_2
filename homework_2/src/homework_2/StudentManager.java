@@ -14,7 +14,7 @@ public class StudentManager{
 	Student[] students = new Student[6];
 
 	
-//reads text from studentdata file and creates objects and stores them in students array
+//reads text from student data file and creates objects and stores them in students array
 	public boolean readFromFile(String filePath) {
 		try {
 			//checks if the file exists
@@ -72,6 +72,30 @@ public class StudentManager{
 		
 		}
 		
+	}
+	
+	
+	//searches by ID and updates student grade
+	//returns true if student was found and updated successfully
+	//returns false if student ID was not found
+	public boolean updateStudentGradeById(int id, double grade) {
+		//iterating through array of students to find id
+		for (int i = 0; i < students.length; i++) {
+			
+			//if any element in the array is null, skip it
+			if(students[i] == null) {
+				continue;
+			}
+			
+			//if student id's match, set grade and return true
+			if(students[i].getId() == id) {
+				students[i].setGrade(grade);
+				return true;
+			}
+		}
+		
+		//no match on ID returns false
+		return false;
 	}
 
 }
