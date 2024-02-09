@@ -74,11 +74,44 @@ public class StudentManager{
 		
 	}
 	
+
+//searches students by id
+	//method signature
+	public boolean searchStudentById(int id){
+		//for loop iterating through students array
+		for (Student searchStudent : students) {
+			//throws false if input value doesn't exist in array
+			if (searchStudent == null) {
+				System.out.println("\n" + "Student not found");
+				return false;
+			}
+			//(Bluhm reference)
+			//casts searchStudent .getId output to int, compares output to input
+			else if (Integer.valueOf(searchStudent.getId()).equals(id)) {
+				System.out.println("\n" + searchStudent.toString());
+				return true;
+			}
+			//iterates through rest of array if not found (I'll test this more after class and remove this if its unnecessary)
+			else {
+				continue;
+			}
+		}
+	return false;
+	}
+	
 	
 	//searches by ID and updates student grade
 	//returns true if student was found and updated successfully
 	//returns false if student ID was not found
 	public boolean updateStudentGradeById(int id, double grade) {
+		//checking if student id exists
+		System.out.println("\nSearching for Student ID " + id + ":");
+		if(searchStudentById(id) == false) {
+			//student id not found returns false
+			return false;
+		}
+		System.out.println("Student ID " + id + " found! Changing grade to " + grade + ":\n");
+		
 		//iterating through array of students to find id
 		for (int i = 0; i < students.length; i++) {
 			
@@ -94,32 +127,8 @@ public class StudentManager{
 			}
 		}
 		
-		//no match on ID returns false
+		//error catch
 		return false;
-	}
-
-//searches students by id
-	//method signature
-	public boolean searchStudentById(int id){
-		//for loop iterating through students array
-		for (Student searchStudent : students) {
-			//throws false if input value doesn't exist in array
-			if (searchStudent == null) {
-				System.out.println("/n" + "Student not found");
-				return false;
-			}
-			//(Bluhm reference)
-			//casts searchStudent .getId output to int, compares output to input
-			else if (Integer.valueOf(searchStudent.getId()).equals(id)) {
-				System.out.println("/n" + searchStudent.toString());
-				return true;
-			}
-			//iterates through rest of array if not found (I'll test this more after class and remove this if its unnecessary)
-			else {
-				continue;
-			}
-		}
-	return false;
 	}
 }
 
