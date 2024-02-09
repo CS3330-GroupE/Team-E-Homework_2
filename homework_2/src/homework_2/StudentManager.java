@@ -85,7 +85,7 @@ public class StudentManager{
 				System.out.println("\n" + "Student not found");
 				return false;
 			}
-			//(Bluhm reference)
+			//(Bluhm reference) https://stackoverflow.com/questions/3661413/how-to-cast-an-object-to-an-int
 			//casts searchStudent .getId output to int, compares output to input
 			else if (Integer.valueOf(searchStudent.getId()).equals(id)) {
 				System.out.println("\n" + searchStudent.toString());
