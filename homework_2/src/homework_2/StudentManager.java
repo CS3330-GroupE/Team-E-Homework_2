@@ -74,6 +74,29 @@ public class StudentManager{
 		
 	}
 
+//searches students by id
+	//method signature
+	public boolean searchStudentById(int id){
+		//for loop iterating through students array
+		for (Student searchStudent : students) {
+			//throws false if input value doesn't exist in array
+			if (searchStudent == null) {
+				System.out.println("/n" + "Student not found");
+				return false;
+			}
+			//(Bluhm reference)
+			//casts searchStudent .getId output to int, compares output to input
+			else if (Integer.valueOf(searchStudent.getId()).equals(id)) {
+				System.out.println("/n" + searchStudent.toString());
+				return true;
+			}
+			//iterates through rest of array if not found (I'll test this more once I get back home and remove this if its unnecessary)
+			else {
+				continue;
+			}
+		}
+	return false;
+	}
 }
 
 
