@@ -66,7 +66,7 @@ public class StudentManager{
 		
 		//checks if array is null and displays message if empty
 		for (int i = 0; i < students.length; i++) {
-			if(students[arrayChecker] == null) {
+			if(students[i] == null) {
 				arrayChecker ++;
 			}			
 		}
