@@ -11,7 +11,8 @@ public class StudentManager{
 	}
 
 //empty array for Student objects with a default value of 5 spaces
-	Student[] students = new Student[6];
+	int arraySize = 6;
+	Student[] students = new Student[arraySize];
 
 	
 //reads text from student data file and creates objects and stores them in students array
@@ -38,12 +39,17 @@ public class StudentManager{
 					students[counter++] = new Student(studentID,studentName,studentGrade);
 				}
 			}
+			//file handling returns false if file is not found
+			else {
+				System.out.println("\nError reading file");
+				return false;
+			}
 		}	
-		//file handling
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return false;
 		}
+		//returns true if no errors
 		return true;
 	}
 	
@@ -54,30 +60,40 @@ public class StudentManager{
 
 //displays students
 	public void displayStudents() {
-		//Student[] students = getStudents();
-		//System.out.println(students);
 		
-		//checks if array starts with a null and displays message if empty
-		if(students[0] == null) {
-			System.out.println ("Error: The array is empty.");
+		//creates a counter to check for total null values in array
+		int arrayChecker = 0;
+		
+		//checks if array is null and displays message if empty
+		for (int i = 0; i < students.length; i++) {
+			if(students[arrayChecker] == null) {
+				arrayChecker ++;
+			}			
 		}
 		
+		if (arrayChecker == arraySize)
+		 {
+			System.out.println ("\nArray is empty");		
+		}
+		else {
+			System.out.println ("\nDisplaying all students:");
+		}
+
 		//for each loop to check all array elements and skips null entries
 		for (Student studentElements : students) {
 			if(studentElements == null) {
 				continue;
 			}
-			
-		System.out.println(studentElements);
 		
+			System.out.println(studentElements);	
 		}
-		
 	}
 	
 
 //searches students by id
 	//method signature
 	public boolean searchStudentById(int id){
+		System.out.println("\n" + "Searching for Student with id: " + id);
 		//for loop iterating through students array
 		for (Student searchStudent : students) {
 			//throws false if input value doesn't exist in array
@@ -88,12 +104,9 @@ public class StudentManager{
 			//(Bluhm reference)
 			//casts searchStudent .getId output to int, compares output to input
 			else if (Integer.valueOf(searchStudent.getId()).equals(id)) {
-				System.out.println("\n" + searchStudent.toString());
+				System.out.println( "Student has been successfully found!");
+				System.out.println(searchStudent.toString());
 				return true;
-			}
-			//iterates through rest of array if not found (I'll test this more after class and remove this if its unnecessary)
-			else {
-				continue;
 			}
 		}
 	return false;
@@ -105,12 +118,12 @@ public class StudentManager{
 	//returns false if student ID was not found
 	public boolean updateStudentGradeById(int id, double grade) {
 		//checking if student id exists
-		System.out.println("\nSearching for Student ID " + id + ":");
+		System.out.println("\nAttempting to update Student with ID: '" + id + "' to grade " + grade);
 		if(searchStudentById(id) == false) {
 			//student id not found returns false
 			return false;
 		}
-		System.out.println("Student ID " + id + " found! Changing grade to " + grade + ":\n");
+		System.out.println("Changing grade to " + grade);
 		
 		//iterating through array of students to find id
 		for (int i = 0; i < students.length; i++) {
@@ -131,5 +144,4 @@ public class StudentManager{
 		return false;
 	}
 }
-
 
