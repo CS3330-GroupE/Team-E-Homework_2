@@ -10,14 +10,14 @@ public class Main {
 		// Read student data from a file and initialize Student objects.
 		boolean fileReadStatus = studentManager.readFromFile("homework_2/files/studentData.txt");
 				if(fileReadStatus == true) {
-					System.out.println("Reading the file and initializing Student objects successful\n");
+					System.out.println("Reading the file and initializing Student objects successful. ");
 				}
 		// Display all students.
 		studentManager.displayStudents();
 		
 		// Search for a student by ID.
 		boolean studentFound = studentManager.searchStudentById(101);
-		System.out.println(studentFound);
+		
 		
 		// Update the grade of a student by ID.
 		boolean studentGradeUpdateStatus = studentManager.updateStudentGradeById(102, 95);
