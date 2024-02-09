@@ -90,7 +90,7 @@ public class StudentManager{
 				System.out.println("/n" + searchStudent.toString());
 				return true;
 			}
-			//iterates through rest of array if not found (I'll test this more once I get back home and remove this if its unnecessary)
+			//iterates through rest of array if not found (I'll test this more after class and remove this if its unnecessary)
 			else {
 				continue;
 			}
